@@ -1,0 +1,40 @@
+Front End Web Developer - 24 SEVEN (Chicago)
+Position: Front End Web Developer
+Location: Downtown Chicago
+Status: Freelance to full-time
+Estimated Duration: 1-3 months with potential conversion
+Starts: ASAP Reviewing Resumes Immediately
+Rate: Up to $35/hr. 
+
+Our agency client is seeking a Front End Web Developer on a freelance to potential full-time basis.
+
+This agency focuses on healthcare and pharmaceuticals but their interactive projects go well beyond the scope of the ordinary landing page and/or websites. They are working on projects for mobile, gaming devices and Google Glass and Occulus.
+
+In this role you will be responsible for designing front end interfaces that leverage back end infrastructure. 
+
+To be considered for this opportunity please have:
+
+- No less than 3 years of front end web development experience within an agency setting
+
+- The ability to hand code and create animation in the following programs; HTML5, CSS3, JavaScript (and JavaScript libraries jQuery, Angular, Backbone, node.js), AJAX, ActionScript3, Flex, Objective-C, C#, XAML, ASP.net and/or PHP
+
+- A strong working knowledge of web services (SOAP/RESTful)
+
+- A high level of proficiency in Illustrator and Photoshop for translating layouts into programming templates
+
+
+- The ability to develop creative animations using CSS3 that are appropriate for various delivery platforms with a fallback to JavaScript animations for legacy browsers
+
+- Experience working in an Object-Oriented Environment
+
+- Previous experience creating code classes to facilitate scalable, reusable code - version control software (preferably Subversion)
+
+- A working knowledge of how to integrate HTML5 video (optimizing file size and playback quality)
+
+- A solid knowledge of databases and query languages (MYSQL and SQL Server)
+
+*** Additional Desired Skills; experience developing native applications for iOS, Android and/or Windows8, past experience customizing WordPress, Drupal and other CMS modules/templates, previous experience developing responsive and/or adaptive web projects, previous experience with Visual Studio 2010+, past experience with Titanium Studio or other cross platform development IDE***
+
+If you are qualified for this opportunity please forward your resume and code samples today.
+
+Thank you for your time!

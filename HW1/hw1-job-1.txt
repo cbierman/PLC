@@ -1,0 +1,8 @@
+State Hygienic Laboratory
+Student-Data Analyst
+ 
+The State Hygienic Laboratory (SHL) at the University of Iowa (Iowa’s Environmental and Public Health Laboratory) is looking for a student to extract data from databases, create excel macros, and help provide trends and analysis on frequently requested data.
+Must be self-directed, have a good understanding of databases and SQL, be able to independently crunch/analyze numbers, and have some experience with statistical analysis, and Excel. 
+Desirable qualifications include: experience with SAS or other statistical packages, laboratory, and biostatistics.
+May work up to 20 hours per week during the school year, and full time during summer months at $12.00 per hour.
+The SHL is located on the Research Park Campus in the HLI Building just north of the Coral Ridge Mall on the corner of Highway 965 and Oakdale Blvd.

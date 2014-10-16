@@ -1,0 +1,13 @@
+Teaching Assistant for Dev/Iowa Technology Training Courses
+added to Jobnet on 7/29/14
+Department/Agency: Office of the Vice President for Research
+Contact: Hayley Yearian
+Telephone: 319-335-4311 (Apply via email)
+Address: 2660 University Capital Centre, Iowa City, IA 52242
+Rate of Pay: $25.00 Hours per Week: 20
+Work Schedule: Hours vary. 20 flexible hours per week September 22 - October 1, October 27 - November 14 and December 8-12. Approximately 20 additional flexible hours September 15 - December 19.
+Job Beginning/Ending Dates: September 15 to December 19
+Duties:
+Dev/Iowa, a UI Partners project, has a paid Teaching Assistant position for its web development courses. You will responsible for helping students understand and apply the concepts and technologies used in cutting edge web development. The courses cover HTML/CSS, JavaScript, Node.js, and databases. Job Duties include: • Assisting students with programming projects and overall learning • Providing instruction in course material • Day-to-day operations • Special projects as assigned All qualified applicants should send a cover letter and resume to: Hayley Yearian - 2660 University Capital Center - deviowa@uiowa.edu
+Qualifications:
+Experience Required: • 3.2 minimum GPA • Excellent oral and written communication skills • Well organized and detail oriented • Ability to help problem solve or troubleshoot pedagogically • Enthusiasm for web technology and a desire to teach about it • Experience authoring HTML, CSS, JavaScript • Understanding of basic networking and protocols like HTTP or DNS • Exposure to Open Source software development • Exposure to Git or similar version control system • Exposure to command line interfaces and UNIX concepts Desirable Qualifications: • TA experience in CS, Engineering, or related field • Experience with Data Structures, Algorithms, and Object Oriented System Design • Exposure to SQL and NoSQL Databases • Experience using Cloud Computing providers/API, IaaS, PaaS, etc. like AWS or similar • Experience writing or contributing to open source software (such as a GitHub profile)
