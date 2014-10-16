@@ -57,5 +57,20 @@ let rec change key value dict =
 					else (*continue search*) (a,b) :: change key value tl
 ;;
 
+type ('a, 'b) trie = Node of 'b list * ('a * ('a, 'b) trie);;
+
+let words trie = match trie with
+| Node (words, _) -> words
+;;
+
+let branches trie = match trie with
+| Node (_, branches) -> branches
+;;
+
+let empty = Node ([], [(None, Node (None, []))]);;
+
+
+
+
 
 
