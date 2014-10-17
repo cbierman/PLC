@@ -1,60 +1,116 @@
-exception Missing
+let int_of_char ch = 
+  match ch with
+  | 'a' -> 2
+  | 'b' -> 2
+  | 'c' -> 2
 
-(* ********************************************************************** *)
-(* Question 1                                                             *)
-(* ********************************************************************** *)
+  | 'd' -> 3
+  | 'e' -> 3
+  | 'f' -> 3
 
-(* 1.1 Return the integer number corresponding to the key of the
-   character *)
-let int_of_char char = raise Missing
+  | 'g' -> 4
+  | 'h' -> 4
+  | 'i' -> 4
 
-(* 1.2 Return the list of integer numbers corresponing to the keys to
-   produce the list of characters *)
-let rec intlist_of_string string = raise Missing
+  | 'j' -> 5
+  | 'k' -> 5
+  | 'l' -> 5
 
-(* ********************************************************************** *)
-(* Question 2                                                             *)
-(* ********************************************************************** *)
+  | 'm' -> 6
+  | 'n' -> 6
+  | 'o' -> 6
 
-(* 2.1 Return the first value mapped to a key. Raise the exception
-   Not_found if no mapping is found for the key *)
-let rec assoc key dict = raise Missing
+  | 'p' -> 7
+  | 'q' -> 7
+  | 'r' -> 7
+  | 's' -> 7
+
+  | 't' -> 8
+  | 'u' -> 8
+  | 'v' -> 8
+
+  | 'w' -> 9
+  | 'x' -> 9
+  | 'y' -> 9
+  | 'z' -> 9
+
+  | _ -> raise Not_found
+;;
+
+let rec intlist_of_string string = 
+  match string with
+  | [] -> []
+  | h :: tl -> (int_of_char h) :: intlist_of_string tl
+;;
+
+let rec assoc key dict = 
+  match dict with
+  | [] -> raise Not_found
+  | (a,b) :: tl -> if a = key then b else assoc key tl
+;;
 
 
-(* 2.3 Replace mapping of the key to a trie with a mapping of the key to
-   the given trie *)
-let rec change key value dict = raise Missing
+let rec change key value dict = 
+  match dict with
+  | [] -> (key, value) :: dict
+  | (a,b) :: tl -> if a = key then (key, value) :: tl 
+          else (a,b) :: change key value tl
+;;
+
+(*
+let rec change key value dict = 
+  match dict with
+  | [] -> (key, value) :: dict
+  | (a,b) :: tl -> if b = key then (value, b) :: dict 
+          else (a,b) :: change key value tl
+*)
 
 
-(* ********************************************************************** *)
-(* Question 3                                                             *)
-(* ********************************************************************** *)
 
-(* A trie with edges labelled with keys of type 'a and nodes labeled
-   with lists of words of type 'b *)
-type ('a, 'b) trie = Node of 'b list * ('a * ('a, 'b) trie) list
+type ('a, 'b) trie = Node of 'b list * ('a * ('a, 'b) trie) list;;
 
-(* Return the words at the root *)
-let words trie = match trie with Node (words, _) -> words
+let words trie = match trie with
+| Node (words, _) -> words
+;;
 
-(* Return an association list of edge labels to branches of the root  *)
-let branches trie = match trie with Node (_, branches) -> branches
+let branches trie = match trie with
+| Node (_, branches) -> branches
+;;
 
-(* 2.1 The empty trie has no outgoing edges and no words at the root *)
-(* let empty = *)
+let empty = Node([], []);;
 
-(* 2.2 Return the sub-trie corresponding to the key, or the empty trie
-   if there is no sub-trie for the key. *)
-let trie_of_key trie key = raise Missing
+let trie_of_key trie key =
+  match trie with
+  | Node(a, b) -> try assoc key b with Not_found -> empty
+  
+let rec find trie keys =
+  match keys with
+    | [] -> words trie
+    | h::tl -> find (trie_of_key trie h) tl
+  
+let add_word word trie =
+  match trie with
+    | Node(a,b) -> Node((word :: a), b)
+  
+;;
+  
+let replace key branch trie =
+  match trie with
+    | Node(a,b) -> Node(a, (change key branch b))
+;;
+  
+let rec add keys word trie =
+  match keys with
+    | [] -> add_word word trie
+    | h::tl -> replace h (add tl word trie) trie
+;;
+  
+  
+let l = [(0, 0); (1, 1); (2, 2); (3, 3)];;
+  
+  
 
-(* 2.3 Find the words mapped to a sequence of keys *)
-let rec find trie keys = raise Missing
 
-(* 2.4 Add word to the root *)
-let add_word word trie = raise Missing
 
-(* 2.4 Replace mapping of key in the root with a mapping of the key to the given branch *)
-let replace key branch trie = raise Missing
 
-(* 2.5 Add a word to the trie *)
-let rec add keys word trie = raise Missing
+
