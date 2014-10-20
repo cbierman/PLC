@@ -57,16 +57,6 @@ let rec change key value dict =
           else (a,b) :: change key value tl
 ;;
 
-(*
-let rec change key value dict = 
-  match dict with
-  | [] -> (key, value) :: dict
-  | (a,b) :: tl -> if b = key then (value, b) :: dict 
-          else (a,b) :: change key value tl
-*)
-
-
-
 type ('a, 'b) trie = Node of 'b list * ('a * ('a, 'b) trie) list;;
 
 let words trie = match trie with
@@ -82,7 +72,7 @@ let empty = Node([], []);;
 let trie_of_key trie key =
   match trie with
   | Node(a, b) -> try assoc key b with Not_found -> empty
-  
+ 
 let rec find trie keys =
   match keys with
     | [] -> words trie
@@ -102,7 +92,7 @@ let replace key branch trie =
 let rec add keys word trie =
   match keys with
     | [] -> add_word word trie
-    | h::tl -> replace h (add tl word trie) trie
+    | h::tl -> replace h (add tl word (trie_of_key trie h)) trie
 ;;
   
   
