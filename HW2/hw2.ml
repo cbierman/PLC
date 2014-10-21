@@ -1,3 +1,9 @@
+(* Cale Bierman *)
+(* Programming Language Concepts *)
+(* 10/20/14 *)
+(* Homework 2 *)
+
+(* Maps character to integer (phone keys) *)
 let int_of_char ch = 
   match ch with
   | 'a' -> 2
@@ -37,19 +43,25 @@ let int_of_char ch =
   | _ -> raise Not_found
 ;;
 
+(* Returns and integer list from the given string *)
 let rec intlist_of_string string = 
   match string with
   | [] -> []
   | h :: tl -> (int_of_char h) :: intlist_of_string tl
 ;;
 
+(* Returns the value in a (key, value) pair *)
 let rec assoc key dict = 
   match dict with
   | [] -> raise Not_found
   | (a,b) :: tl -> if a = key then b else assoc key tl
 ;;
 
+(* Question 2.2: My function is tail recursive because as soon as it encounters the
+   key, it just returns the value. It wouldn't be tail recursive if the recursive
+   calls higher in the stack used the result of the ones lower in the stack *)
 
+(* Returns an association list with a binding of a new key to a new value *)
 let rec change key value dict = 
   match dict with
   | [] -> (key, value) :: dict
@@ -59,44 +71,48 @@ let rec change key value dict =
 
 type ('a, 'b) trie = Node of 'b list * ('a * ('a, 'b) trie) list;;
 
+(* Returns list of words stored in a trie node *)
 let words trie = match trie with
 | Node (words, _) -> words
 ;;
-
+(* Returns branches of a trie node *)
 let branches trie = match trie with
 | Node (_, branches) -> branches
 ;;
 
+(* the empty trie *)
 let empty = Node([], []);;
 
+(* Returns a trie from a given key *)
 let trie_of_key trie key =
   match trie with
   | Node(a, b) -> try assoc key b with Not_found -> empty
- 
+
+(* Returns the word list by following the edges of the trie *)
 let rec find trie keys =
   match keys with
     | [] -> words trie
     | h::tl -> find (trie_of_key trie h) tl
-  
+
+(* Adds a word to a trie node *)
 let add_word word trie =
   match trie with
     | Node(a,b) -> Node((word :: a), b)
   
 ;;
-  
+
+(* Replaces the mapping of the key to it's subtree by branch *)
 let replace key branch trie =
   match trie with
     | Node(a,b) -> Node(a, (change key branch b))
 ;;
-  
+
+(* Adds a word to a trie dictionary *)
 let rec add keys word trie =
   match keys with
     | [] -> add_word word trie
     | h::tl -> replace h (add tl word (trie_of_key trie h)) trie
 ;;
-  
-  
-let l = [(0, 0); (1, 1); (2, 2); (3, 3)];;
   
   
 
