@@ -1,0 +1,12 @@
+# Evaluator for expressions as discussed in class. 
+
+1. Type "make" to build the executable. 
+
+2. Type "./exprMain.native" to run.
+
+3. Enter an expression and finish with ENTER and CTRL+D. 
+
+4. You will see the parsed expression and its value.
+
+5. Repeat from Step 2
+

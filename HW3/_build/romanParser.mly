@@ -24,7 +24,6 @@ hundrds:
 	| HUNDRED FVHUNDRED { 400; }
 	| HUNDRED THOUSAND { 900; }
 	| FVHUNDRED leth300 { 500 + $2; }
-	| {0;}
 
 leth30:
 	| TEN { 10; }
@@ -37,7 +36,6 @@ tens:
 	| TEN FIFTY  { 40; }
 	| TEN HUNDRED { 90; }
 	| FIFTY leth30 { 50 + $2; }
-	| {0;}
 
 leth3:
 	| ONE { 1; }
@@ -50,4 +48,3 @@ units:
 	| ONE FIVE { 4; }
 	| FIVE leth3 { 5 + $2; }
 	| ONE TEN { 9; }
-	| {0;}
