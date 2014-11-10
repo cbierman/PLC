@@ -44,7 +44,7 @@ leth3:
 	| 				{ 0; }
 
 units:
-	| leth3 { $1; }
-	| ONE FIVE { 4; }
-	| FIVE leth3 { 5 + $2; }
-	| ONE TEN { 9; }
+	| leth3 			{ $1; }
+	| ONE FIVE 			{ 4; }
+	| FIVE leth3 			{ 5 + $2; }
+	| ONE TEN 			{ 9; }
