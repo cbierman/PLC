@@ -1,0 +1,80 @@
+
+** Conflict (reduce/reduce) in state 22.
+** Token involved: EOF
+** This state is reached from roman after reading:
+
+thousnds hundrds tens 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+roman 
+thousnds hundrds tens units EOF // lookahead token appears
+                      (?)
+
+** In state 22, looking ahead at EOF, reducing production
+** leth3 -> 
+** is permitted because of the following sub-derivation:
+
+leth3 // lookahead token is inherited
+. 
+
+** In state 22, looking ahead at EOF, reducing production
+** units -> 
+** is permitted because of the following sub-derivation:
+
+. 
+
+** Conflict (reduce/reduce) in state 13.
+** Tokens involved: ONE FIVE EOF
+** The following explanations concentrate on token ONE.
+** This state is reached from roman after reading:
+
+thousnds hundrds 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+roman 
+thousnds hundrds tens units EOF // lookahead token appears because units can begin with ONE
+                 (?)
+
+** In state 13, looking ahead at ONE, reducing production
+** leth30 -> 
+** is permitted because of the following sub-derivation:
+
+leth30 // lookahead token is inherited
+. 
+
+** In state 13, looking ahead at ONE, reducing production
+** tens -> 
+** is permitted because of the following sub-derivation:
+
+. 
+
+** Conflict (reduce/reduce) in state 3.
+** Tokens involved: TEN ONE FIVE FIFTY EOF
+** The following explanations concentrate on token TEN.
+** This state is reached from roman after reading:
+
+thousnds 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+roman 
+thousnds hundrds tens units EOF // lookahead token appears because tens can begin with TEN
+         (?)
+
+** In state 3, looking ahead at TEN, reducing production
+** hundrds -> 
+** is permitted because of the following sub-derivation:
+
+. 
+
+** In state 3, looking ahead at TEN, reducing production
+** leth300 -> 
+** is permitted because of the following sub-derivation:
+
+leth300 // lookahead token is inherited
+. 

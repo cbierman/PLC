@@ -1,0 +1,30 @@
+### Starting build.
+# Target: romanChecker.ml.depends, tags: { extension:ml, file:romanChecker.ml, ocaml, ocamldep, quiet }
+/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules romanChecker.ml > romanChecker.ml.depends # cached
+# Target: ocamlType.mli.depends, tags: { extension:mli, file:ocamlType.mli, ocaml, ocamldep, quiet }
+/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlType.mli > ocamlType.mli.depends # cached
+# Target: ocamlType.cmi, tags: { byte, compile, extension:mli, file:ocamlType.mli, interf, ocaml, quiet }
+/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o ocamlType.cmi ocamlType.mli # cached
+# Target: romanLexer.mll, tags: { extension:mll, file:romanLexer.mll, lexer, ocaml, ocamllex, quiet }
+/Users/cbierman/.opam/4.01.0/bin/ocamllex.opt -q romanLexer.mll # cached
+# Target: romanLexer.ml.depends, tags: { extension:ml, file:romanLexer.ml, ocaml, ocamldep, quiet }
+/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules romanLexer.ml > romanLexer.ml.depends # cached
+# Target: romanParser.mly.depends, tags: { extension:mly, file:romanParser.mly, menhir_ocamldep, ocaml, ocamldep, quiet }
+menhir --explain --infer --strict --raw-depend --ocamldep '/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules' romanParser.mly > romanParser.mly.depends
+# Target: romanParser.mly, tags: { byte, compile, extension:mly, file:romanParser.mly, menhir, ocaml, parser, quiet }
+menhir --explain --infer --strict --ocamlc /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt --infer romanParser.mly
++ menhir --explain --infer --strict --ocamlc /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt --infer romanParser.mly
+Error: 3 states have reduce/reduce conflicts.
+Warning: 9 reduce/reduce conflicts were arbitrarily resolved.
+Error: one state has an end-of-stream conflict.
+File "romanParser.mly", line 27, characters 3-3:
+Error: production hundrds -> is never reduced.
+File "romanParser.mly", line 10, characters 4-4:
+Error: production roman -> is never reduced.
+File "romanParser.mly", line 40, characters 3-3:
+Error: production tens -> is never reduced.
+File "romanParser.mly", line 53, characters 3-3:
+Error: production units -> is never reduced.
+Error: in total, 4 productions are never reduced.
+Command exited with code 1.
+# Compilation unsuccessful.
