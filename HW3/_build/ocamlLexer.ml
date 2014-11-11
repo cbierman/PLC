@@ -8,9 +8,16 @@ open OcamlParser
 open OcamlType
 
 exception SyntaxError of string
+
+let next_line lexbuf =
+  let pos = lexbuf.lex_curr_p in
+  lexbuf.lex_curr_p <-
+    { pos with pos_bol = lexbuf.lex_curr_pos;
+               pos_lnum = pos.pos_lnum + 1 }
+
     
 
-# 14 "ocamlLexer.ml"
+# 21 "ocamlLexer.ml"
 let __ocaml_lex_tables = {
   Lexing.lex_base = 
    "\000\000\245\255\246\255\000\000\026\000\101\000\127\000\251\255\
@@ -187,59 +194,59 @@ let rec token lexbuf =
 and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 16 "ocamlLexer.mll"
+# 23 "ocamlLexer.mll"
           ( SQUOTE )
-# 193 "ocamlLexer.ml"
+# 200 "ocamlLexer.ml"
 
   | 1 ->
-# 17 "ocamlLexer.mll"
+# 24 "ocamlLexer.mll"
          ( LPAREN )
-# 198 "ocamlLexer.ml"
+# 205 "ocamlLexer.ml"
 
   | 2 ->
-# 18 "ocamlLexer.mll"
+# 25 "ocamlLexer.mll"
          ( RPAREN )
-# 203 "ocamlLexer.ml"
+# 210 "ocamlLexer.ml"
 
   | 3 ->
-# 19 "ocamlLexer.mll"
+# 26 "ocamlLexer.mll"
          ( COMMA )
-# 208 "ocamlLexer.ml"
+# 215 "ocamlLexer.ml"
 
   | 4 ->
-# 20 "ocamlLexer.mll"
+# 27 "ocamlLexer.mll"
          ( STAR )
-# 213 "ocamlLexer.ml"
+# 220 "ocamlLexer.ml"
 
   | 5 ->
-# 21 "ocamlLexer.mll"
-         ( IDENT )
-# 218 "ocamlLexer.ml"
+# 28 "ocamlLexer.mll"
+         ( IDT )
+# 225 "ocamlLexer.ml"
 
   | 6 ->
-# 22 "ocamlLexer.mll"
+# 29 "ocamlLexer.mll"
          ( ARROW )
-# 223 "ocamlLexer.ml"
+# 230 "ocamlLexer.ml"
 
   | 7 ->
-# 23 "ocamlLexer.mll"
+# 30 "ocamlLexer.mll"
           ( INT )
-# 228 "ocamlLexer.ml"
+# 235 "ocamlLexer.ml"
 
   | 8 ->
-# 24 "ocamlLexer.mll"
+# 31 "ocamlLexer.mll"
            ( BOOL )
-# 233 "ocamlLexer.ml"
+# 240 "ocamlLexer.ml"
 
   | 9 ->
-# 25 "ocamlLexer.mll"
+# 32 "ocamlLexer.mll"
         ( EOF )
-# 238 "ocamlLexer.ml"
+# 245 "ocamlLexer.ml"
 
   | 10 ->
-# 26 "ocamlLexer.mll"
-      ( raise Missing )
-# 243 "ocamlLexer.ml"
+# 33 "ocamlLexer.mll"
+      ( raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) )
+# 250 "ocamlLexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf; __ocaml_lex_token_rec lexbuf __ocaml_lex_state
 
