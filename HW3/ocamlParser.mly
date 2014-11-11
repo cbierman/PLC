@@ -9,6 +9,9 @@ open OcamlType
 %token EOF
 
 %start <OcamlType.otype> main
+%right ARROW
+%right BOOL
+%right INT
 %%
 
 main: 
@@ -32,4 +35,4 @@ typeconstr:
 	| { raise Missing }
 
 ident:
-	| e = IDENT { TVar e  }
+	| e = IDENT { e  }

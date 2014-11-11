@@ -1,21 +1,22 @@
 ### Starting build.
 # Target: ocamlChecker.ml.depends, tags: { extension:ml, file:ocamlChecker.ml, ocaml, ocamldep, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlChecker.ml > ocamlChecker.ml.depends # cached
+/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlChecker.ml > ocamlChecker.ml.depends
 # Target: ocamlLexer.mll, tags: { extension:mll, file:ocamlLexer.mll, lexer, ocaml, ocamllex, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamllex.opt -q ocamlLexer.mll # cached
+/Users/cbierman/.opam/4.01.0/bin/ocamllex.opt -q ocamlLexer.mll
 # Target: ocamlLexer.ml.depends, tags: { extension:ml, file:ocamlLexer.ml, ocaml, ocamldep, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlLexer.ml > ocamlLexer.ml.depends # cached
+/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlLexer.ml > ocamlLexer.ml.depends
 # Target: ocamlParser.mly.depends, tags: { extension:mly, file:ocamlParser.mly, menhir_ocamldep, ocaml, ocamldep, quiet }
-menhir --explain --infer --strict --raw-depend --ocamldep '/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules' ocamlParser.mly > ocamlParser.mly.depends # cached
+menhir --explain --infer --strict --raw-depend --ocamldep '/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules' ocamlParser.mly > ocamlParser.mly.depends
 # Target: ocamlType.mli.depends, tags: { extension:mli, file:ocamlType.mli, ocaml, ocamldep, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlType.mli > ocamlType.mli.depends # cached
+/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlType.mli > ocamlType.mli.depends
 # Target: ocamlType.cmi, tags: { byte, compile, extension:mli, file:ocamlType.mli, interf, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o ocamlType.cmi ocamlType.mli # cached
+/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o ocamlType.cmi ocamlType.mli
 # Target: ocamlParser.mly, tags: { byte, compile, extension:mly, file:ocamlParser.mly, menhir, ocaml, parser, quiet }
 menhir --explain --infer --strict --ocamlc /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt --infer ocamlParser.mly
 + menhir --explain --infer --strict --ocamlc /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt --infer ocamlParser.mly
-File "ocamlParser.mly", line 35, characters 13-24:
-Error: This expression has type OcamlType.otype
-       but an expression was expected of type string
+File "ocamlParser.mly", line 29, characters 3-32:
+Error: the grammar is ambiguous.
+The following items participate in an epsilon-cycle:
+typexpr -> . typexpr typeconstr 
 Command exited with code 1.
 # Compilation unsuccessful.
