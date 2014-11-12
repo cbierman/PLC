@@ -13,15 +13,9 @@ menhir --explain --infer --strict --raw-depend --ocamldep '/Users/cbierman/.opam
 /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o ocamlType.cmi ocamlType.mli
 # Target: ocamlParser.mly, tags: { byte, compile, extension:mly, file:ocamlParser.mly, menhir, ocaml, parser, quiet }
 menhir --explain --infer --strict --ocamlc /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt --infer ocamlParser.mly
-# Target: ocamlParser.mli.depends, tags: { extension:mli, file:ocamlParser.mli, ocaml, ocamldep, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules ocamlParser.mli > ocamlParser.mli.depends
-# Target: ocamlParser.cmi, tags: { byte, compile, extension:mli, file:ocamlParser.mli, interf, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o ocamlParser.cmi ocamlParser.mli
-# Target: ocamlLexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:ocamlLexer.cmo, file:ocamlLexer.ml, implem, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o ocamlLexer.cmo ocamlLexer.ml
-+ /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o ocamlLexer.cmo ocamlLexer.ml
-File "ocamlLexer.mll", line 28, characters 9-16:
-Error: The constructor IDT expects 1 argument(s),
-       but is applied here to 0 argument(s)
-Command exited with code 2.
++ menhir --explain --infer --strict --ocamlc /Users/cbierman/.opam/4.01.0/bin/ocamlc.opt --infer ocamlParser.mly
+File "ocamlParser.mly", line 48, characters 39-41:
+Error: This expression has type OcamlType.otype
+       but an expression was expected of type string
+Command exited with code 1.
 # Compilation unsuccessful.

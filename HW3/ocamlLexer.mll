@@ -25,7 +25,7 @@ rule token = parse
   | ')' 	{ RPAREN }
   | ',' 	{ COMMA }
   | '*' 	{ STAR }
-  | var 	{ IDT }
+  | var 	{ IDT Lexing.lexeme }
   | "->"	{ ARROW }
   | "int"	{ INT }
   | "bool"	{ BOOL }

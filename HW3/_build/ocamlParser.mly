@@ -13,6 +13,7 @@ open OcamlType
 %right IDT
 %right ARROW
 %right STAR
+%right COMMA
 
 %%
 
@@ -28,10 +29,21 @@ typexpr:
 	| e1 = typexpr STAR e2 = typexpr { Pair ( e1, e2) }
 	| e = typeconstr { TVar( e ) }
 	| e1 = typexpr e2 = typeconstr { Type (e2, [e1]) }
-	| LPAREN e1 = typexpr COMMA e2 = typexpr RPAREN e3 = typeconstr { Type ( e3, [e1; e2] ) }
+	
+	| LPAREN e1 = l RPAREN e3 = typeconstr { Type ( e3,  [e1] ) }
+
 
 typeconstr:
 	| e = ident { e }
 
 ident:
-	| IDT { $1 }
+	| e = IDT { e }
+
+l:
+	| t = elements { t }
+	| e = typexpr { e }
+
+elements:
+	| e = l { e }
+	| e1 = l COMMA e2 = elements { Type ( e1, [e2]) }
+
