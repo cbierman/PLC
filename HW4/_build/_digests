@@ -1,3 +1,7 @@
 "Rule: ocaml dependencies ml (%=gcChecker )": "\152d\249\184\027z\025\129\2247\198\231\156\001HZ"
-"Resource: /mnt/nfs/netapp2/students/cbierman/Desktop/PLC/HW4/copyingGC.ml": "\194\188\156\156\145\231Y>\030?9\166\182\182\127\200"
+"Rule: ocaml dependencies ml (%=memory )": "Fh\003\128\142=\157\191\228\213\203d\003\244\031T"
+"Resource: /mnt/nfs/netapp2/students/cbierman/Desktop/PLC/HW4/copyingGC.ml": "\151k!\189\239\236\012l\021\165\219\150\2024:_"
+"Resource: /mnt/nfs/netapp2/students/cbierman/Desktop/PLC/HW4/memory.ml": "+Z\232_\025rqy\165\245v+X\167\153\240"
 "Resource: /mnt/nfs/netapp2/students/cbierman/Desktop/PLC/HW4/gcChecker.ml": "\239\0030z\186d)\000\228m\129&JVLo"
+"Rule: ocaml: ml -> cmo & cmi (%=memory )": "Ipv5\174\187\005\224\021\\+C`W\146m"
+"Rule: ocaml dependencies ml (%=copyingGC )": "\234<F\201$\"Q8\189V\140\190\179L(E"

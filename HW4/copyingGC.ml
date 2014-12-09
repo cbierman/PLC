@@ -20,11 +20,11 @@ let copy_obj (free : int) (addr : int) =
     else begin
         ram.(start) <- ram.(address);
         ram.(address) <- FwdPointer (start);
-        copy start+1 size address+1
+        copy (start + 1) (size) (address + 1)
       end
  
   in                                                                
-  let thing =ram.(addr) in 
+  let thing = ram.(addr) in 
     match thing with
       | FwdPointer (x) -> free, x
       | Object (a, b, c) -> copy free (b+free) addr
@@ -45,11 +45,25 @@ let copy_obj (free : int) (addr : int) =
 
 *)
 let rec scan_tospace (free : int) (unscanned : int) = 
+  let first = function (x,y) -> x
+  in
   if free = unscanned 
   then free
   else
+    let rec apply refs =
+      match refs with
+       | [] -> ()
+       | h :: tl -> begin
+          scan_tospace (first (copy_obj free h)) (unscanned + 1);
+          apply tl
+         end
+    in
     match ram.(unscanned) with
-      | [] -> 
+      | Object(_, _, c) -> apply c
+        
+
+
+      | _ -> ()
   
   
   (* Garbage collect with given root set. Copy all reachable objects in
@@ -63,4 +77,3 @@ let rec scan_tospace (free : int) (unscanned : int) =
 *)
 let copy_gc (root_set : int list) = raise Missing
   
-;;  
