@@ -53,16 +53,10 @@ let rec scan_tospace (free : int) (unscanned : int) =
     let rec apply refs =
       match refs with
        | [] -> ()
-       | h :: tl -> begin
-          scan_tospace (first (copy_obj free h)) (unscanned + 1);
-          apply tl
-         end
+       | h :: tl -> scan_tospace (first (copy_obj free h)) (unscanned + 1)
     in
     match ram.(unscanned) with
-      | Object(_, _, c) -> apply c
-        
-
-
+      | Object(_, _, c) -> 
       | _ -> ()
   
   
