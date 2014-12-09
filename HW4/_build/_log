@@ -1,22 +1,10 @@
 ### Starting build.
 # Target: gcChecker.ml.depends, tags: { extension:ml, file:gcChecker.ml, ocaml, ocamldep, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules gcChecker.ml > gcChecker.ml.depends
+/usr/bin/ocamldep.opt -modules gcChecker.ml > gcChecker.ml.depends
 # Target: copyingGC.ml.depends, tags: { extension:ml, file:copyingGC.ml, ocaml, ocamldep, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules copyingGC.ml > copyingGC.ml.depends
-# Target: memory.ml.depends, tags: { extension:ml, file:memory.ml, ocaml, ocamldep, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamldep.opt -modules memory.ml > memory.ml.depends
-# Target: memory.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:memory.cmo, file:memory.ml, implem, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o memory.cmo memory.ml
-# Target: copyingGC.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:copyingGC.cmo, file:copyingGC.ml, implem, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o copyingGC.cmo copyingGC.ml
-# Target: gcChecker.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:gcChecker.cmo, file:gcChecker.ml, implem, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlc.opt -c -o gcChecker.cmo gcChecker.ml
-# Target: memory.cmx, tags: { compile, extension:cmx, extension:ml, file:memory.cmx, file:memory.ml, implem, native, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlopt.opt -c -o memory.cmx memory.ml
-# Target: copyingGC.cmx, tags: { compile, extension:cmx, extension:ml, file:copyingGC.cmx, file:copyingGC.ml, implem, native, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlopt.opt -c -o copyingGC.cmx copyingGC.ml
-# Target: gcChecker.cmx, tags: { compile, extension:cmx, extension:ml, file:gcChecker.cmx, file:gcChecker.ml, implem, native, ocaml, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlopt.opt -c -o gcChecker.cmx gcChecker.ml
-# Target: gcChecker.native, tags: { dont_link_with, extension:native, file:gcChecker.native, link, native, ocaml, program, quiet }
-/Users/cbierman/.opam/4.01.0/bin/ocamlopt.opt memory.cmx copyingGC.cmx gcChecker.cmx -o gcChecker.native
-# Compilation successful.
+/usr/bin/ocamldep.opt -modules copyingGC.ml > copyingGC.ml.depends
++ /usr/bin/ocamldep.opt -modules copyingGC.ml > copyingGC.ml.depends
+File "copyingGC.ml", line 1, characters 1-3:
+Error: Syntax error
+Command exited with code 2.
+# Compilation unsuccessful.
