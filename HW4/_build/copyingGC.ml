@@ -12,23 +12,23 @@ open Memory
   pointer, the second is the new address of the object. 
 
 *)
-let copy_obj (free : int) (addr : int) = 
+
+let copy_obj (free : int) (addr : int) =
  
-  let rec copy start size address =
-    if start = size 
-    then start,free 
-    else begin
+  let rec copy start size address n =
+    if start = n
+    then start,(start-size)
+    else 
+      begin
         ram.(start) <- ram.(address);
         ram.(address) <- FwdPointer (start);
-        copy (start + 1) (size) (address + 1)
+        copy (start + 1) (size) (address + 1) (n)
       end
- 
   in                                                                
-  let thing =ram.(addr) in 
-    match thing with
-      | FwdPointer (x) -> free, x
-      | Object (a, b, c) -> copy free (b+free) addr
-      | _ -> raise Missing
+  match ram.(addr) with
+   | FwdPointer (x) -> free, x
+   | Object (a, b, c) -> copy free b addr (b+free)
+   | _ -> raise Missing
 
   
   
@@ -45,27 +45,29 @@ let copy_obj (free : int) (addr : int) =
 
 *)
 let rec scan_tospace (free : int) (unscanned : int) = 
-  let first = function (x,y) -> x
-  in
+  let first = function (x,y) -> x in
   if free = unscanned 
   then free
   else
-    let rec apply refs =
+    (* Creates a list of tuples (freevalue, newaddress) *)
+    let rec apply refs free_this = 
       match refs with
-       | [] -> ()
-       | h :: tl -> begin
-          scan_tospace (first (copy_obj free h)) (unscanned + 1);
-          apply tl
-         end
+        | [] -> []
+        | h::tl -> let (x,y) = (copy_obj free_this h) in (x,y) :: (apply tl x)
     in
+ (* function taking a list of tupels and removing the first tuple item *)
+    let rec flattify list =
+       match list with
+         | [] -> []
+         | (a,b)::tl -> b :: flattify tl
+    in      
     match ram.(unscanned) with
-      | Object(_, _, c) -> apply c
-        
+      | Object(a,b,c) -> (let a1 = (apply c free) in 
+            let a2 = (try (first (List.hd a1)) with Failure (x) -> free) and a3 = (flattify a1) in ram.(unscanned) <- Object (a, b, a3);
+                                                                   scan_tospace (a2) (unscanned + 1))
+      | _ -> scan_tospace free (unscanned + 1)
 
 
-      | _ -> ()
-  
-  
   (* Garbage collect with given root set. Copy all reachable objects in
   the From-space to the To-space, update references in objects and
   keep the To-space compact without holes between objects. 
@@ -75,5 +77,16 @@ let rec scan_tospace (free : int) (unscanned : int) =
   Return the new addresses in the To-space of the objects in the root
   set.
 *)
-let copy_gc (root_set : int list) = raise Missing
+let copy_gc (root_set : int list) = 
+  let rec starting list free_ptr =
+     match list with
+       | [] -> []
+       | h :: tl -> let (a,b) = (copy_obj free_ptr h) in b :: (starting tl a)
+  in
+  let free = ram_size/2 in
+  let starting_list = starting root_set free in
+  let to_free = ((List.hd starting_list) + 1) and unscanned = ram_size/2 in
+  ((List.rev starting_list), scan_tospace to_free unscanned)
+
   
+

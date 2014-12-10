@@ -9,11 +9,14 @@
 /usr/bin/ocamlc.opt -c -o memory.cmo memory.ml
 # Target: copyingGC.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:copyingGC.cmo, file:copyingGC.ml, implem, ocaml, quiet }
 /usr/bin/ocamlc.opt -c -o copyingGC.cmo copyingGC.ml
-+ /usr/bin/ocamlc.opt -c -o copyingGC.cmo copyingGC.ml
-File "copyingGC.ml", line 57, characters 10-64:
-Warning 10: this expression should have type unit.
-File "copyingGC.ml", line 62, characters 27-34:
-Error: This expression has type unit but an expression was expected of type
-         int
-Command exited with code 2.
-# Compilation unsuccessful.
+# Target: gcChecker.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:gcChecker.cmo, file:gcChecker.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o gcChecker.cmo gcChecker.ml
+# Target: memory.cmx, tags: { compile, extension:cmx, extension:ml, file:memory.cmx, file:memory.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o memory.cmx memory.ml
+# Target: copyingGC.cmx, tags: { compile, extension:cmx, extension:ml, file:copyingGC.cmx, file:copyingGC.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o copyingGC.cmx copyingGC.ml
+# Target: gcChecker.cmx, tags: { compile, extension:cmx, extension:ml, file:gcChecker.cmx, file:gcChecker.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o gcChecker.cmx gcChecker.ml
+# Target: gcChecker.native, tags: { dont_link_with, extension:native, file:gcChecker.native, link, native, ocaml, program, quiet }
+/usr/bin/ocamlopt.opt memory.cmx copyingGC.cmx gcChecker.cmx -o gcChecker.native
+# Compilation successful.
