@@ -9,12 +9,18 @@
 /usr/bin/ocamlc.opt -c -o memory.cmo memory.ml
 # Target: copyingGC.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:copyingGC.cmo, file:copyingGC.ml, implem, ocaml, quiet }
 /usr/bin/ocamlc.opt -c -o copyingGC.cmo copyingGC.ml
++ /usr/bin/ocamlc.opt -c -o copyingGC.cmo copyingGC.ml
+File "copyingGC.ml", line 48, characters 6-11:
+Warning 26: unused variable first.
 # Target: gcChecker.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:gcChecker.cmo, file:gcChecker.ml, implem, ocaml, quiet }
 /usr/bin/ocamlc.opt -c -o gcChecker.cmo gcChecker.ml
 # Target: memory.cmx, tags: { compile, extension:cmx, extension:ml, file:memory.cmx, file:memory.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o memory.cmx memory.ml
 # Target: copyingGC.cmx, tags: { compile, extension:cmx, extension:ml, file:copyingGC.cmx, file:copyingGC.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o copyingGC.cmx copyingGC.ml
++ /usr/bin/ocamlopt.opt -c -o copyingGC.cmx copyingGC.ml
+File "copyingGC.ml", line 48, characters 6-11:
+Warning 26: unused variable first.
 # Target: gcChecker.cmx, tags: { compile, extension:cmx, extension:ml, file:gcChecker.cmx, file:gcChecker.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o gcChecker.cmx gcChecker.ml
 # Target: gcChecker.native, tags: { dont_link_with, extension:native, file:gcChecker.native, link, native, ocaml, program, quiet }

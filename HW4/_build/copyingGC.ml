@@ -28,7 +28,7 @@ let copy_obj (free : int) (addr : int) =
   match ram.(addr) with
    | FwdPointer (x) -> free, x
    | Object (a, b, c) -> copy free b addr (b+free)
-   | _ -> raise Missing
+   | _ -> raise (Failure ("Der Versuch, eine freie oder Objektdaten Zelle kopieren ist nicht erlaubt."))
 
   
   
@@ -50,21 +50,21 @@ let rec scan_tospace (free : int) (unscanned : int) =
   then free
   else
     (* Creates a list of tuples (freevalue, newaddress) *)
-    let rec apply refs free_this = 
+    let rec apply refs free_this acc = 
       match refs with
-        | [] -> []
-        | h::tl -> let (x,y) = (copy_obj free_this h) in (x,y) :: (apply tl x)
+        | [] -> (free_this, acc)
+        | h::tl -> let (x,y) = (copy_obj free_this h) in apply tl x (y::acc)
     in
  (* function taking a list of tupels and removing the first tuple item *)
-    let rec flattify list =
+    (*let rec flattify list =
        match list with
          | [] -> []
          | (a,b)::tl -> b :: flattify tl
-    in      
+    in    *)  
     match ram.(unscanned) with
-      | Object(a,b,c) -> (let a1 = (apply c free) in 
-            let a2 = (try (first (List.hd a1)) with Failure (x) -> free) and a3 = (flattify a1) in ram.(unscanned) <- Object (a, b, a3);
-                                                                   scan_tospace (a2) (unscanned + 1))
+      | Object(a,b,c) -> (*(let a1 = (apply c free) in 
+            let a2 = (try (first (List.hd a1)) with Failure (x) -> free) and *) let (a1,b1) = (apply c free []) in ram.(unscanned) <- Object (a, b, (List.rev b1));
+                                                                   scan_tospace (a1) (unscanned + 1)
       | _ -> scan_tospace free (unscanned + 1)
 
 
@@ -78,15 +78,15 @@ let rec scan_tospace (free : int) (unscanned : int) =
   set.
 *)
 let copy_gc (root_set : int list) = 
-  let rec starting list free_ptr =
+  let rec starting list free_ptr acc =
      match list with
-       | [] -> []
-       | h :: tl -> let (a,b) = (copy_obj free_ptr h) in b :: (starting tl a)
+       | [] -> (free_ptr,acc)
+       | h :: tl -> let (a,b) = (copy_obj free_ptr h) in starting tl a (b::acc)
   in
   let free = ram_size/2 in
-  let starting_list = starting root_set free in
-  let to_free = ((List.hd starting_list) + 1) and unscanned = ram_size/2 in
-  ((List.rev starting_list), scan_tospace to_free unscanned)
+  let (a1,b1) = starting root_set free []
+  and unscanned = ram_size/2 in
+  ((List.rev b1), scan_tospace a1 unscanned)
 
   
 
